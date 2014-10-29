@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="emap.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="jsDraw2DX_Uncompressed.js"></script>
+    <script type="text/javascript" src="emap.js"></script>
+
+    <script src='spectrum/spectrum.js'></script>
+    <link rel='stylesheet' href='spectrum/spectrum.css'/>
+    <style>
+        * {
+            font-family: "微软雅黑";
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        $(function () {
+            emap.init({
+                lat: 31.385996,
+                lon: 120.976484,
+                zoom: 3,
+                tilePixel: 512,
+                LIMIT_MAX_ZOOM: 5,
+                LIMIT_MIN_ZOOM: 0,
+                baseDir: "",
+                makePos: function (lat, lon) {
+                    var posX = (lon - 120.623410) / 0.62375;
+                    var posY = (31.5859851 - lat) / 0.623728;
+                    return new emap.Position(posX, posY);
+                },
+                posToLatLon: function (posX, posY) {
+                    var lat = 31.5859851 - posY * 0.623728;
+                    var lon = posX * 0.62375 + 120.623410;
+                    return {lat: lat, lon: lon};
+                },
+                getEdgeNum: function (zoom) {
+                    zoom = zoom || this.zoom;
+                    return Math.pow(2, zoom);
+                },
+                getTileUrl: function (x, y, zoom) {
+                    return "tiles/tile" + y + "_" + x + "_" + zoom + ".png";
+                }
+            });
+            var map = new emap.Map({
+                container: "maps",
+                toolbar: "#tools"
+            });
+            map.draw();
+
+            $("#marker").click(function () {
+                map.addEventListener(emap.events.MAP_CLICK, maker);
+            });
+
+            function maker(pos) {
+                var latLon = map.posToLatLon(pos.posX, pos.posY);
+                var marker = new emap.Marker({lat: latLon.lat, lon: latLon.lon});
+                map.addMarker(marker);
+                map.removeListener(emap.events.MAP_CLICK, maker);
+                console.info(marker);
+            }
+
+
+            var graph = map.createGraph();
+
+            $("#startDraw").click(function () {
+                var shape = $("#shape").val();
+                var wight = $("#wight").val();
+                var penColor = $("#penColor").val();
+                var brush = $("#brush").val();
+                var pen = new jxPen(new jxColor(penColor), wight);
+                var b = null;
+                if (brush) {
+                    b = new jxBrush(new jxColor(brush));
+                }
+                graph.create({shape: shape,
+                    pen: pen,
+                    brush: b,
+                    afterDrawing: function (shape, graph) {
+                        console.info(shape);
+                    }
+                });
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<div id="maps" style="position: absolute;top: 0px;left: 0px;bottom: 0px;right: 0px;"></div>
+<div id="tools" style="">
+    <div style="height: 30px;background-color: #3d3d3d;color: #f5f5f5;padding: 3px; ">
+        <span style="font-size: 14px;font-weight: bold;margin-left: 10px;">地图工具条</span>
+        <span style="margin-left: 10px;">
+            粗细：
+            <select id="wight">
+                <option value="1px">1px</option>
+                <option value="2px" selected="selected">2px</option>
+                <option value="3px">3px</option>
+                <option value="5px">5px</option>
+                <option value="8px">8px</option>
+            </select>
+            颜色：
+            <input type='text' id="penColor" value="#f00"/>
+            填充：
+            <input type='text' id="brush"/>
+            选择图形：
+            <select id="shape">
+                <option value="line" selected="selected">直线</option>
+                <option value="rect">矩形</option>
+                <option value="polyline">折线</option>
+                <option value="polygon">多边形</option>
+                <option value="circle">圆</option>
+                <option value="ellipse">椭圆</option>
+                <option value="curve">平滑曲线</option>
+                <option value="closedcurve">闭合曲线</option>
+                <option value="bezier">贝塞尔曲线</option>
+            </select>
+            <button id="startDraw">开始绘制</button>
+            <button id="marker">标记点</button>
+
+            <span style="margin-left:50px;">绘制对象请查看控制台</span>
+        </span>
+    </div>
+</div>
+
+<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+<script>
+    $(function () {
+        $("#penColor").spectrum({
+            preferredFormat: "hex",
+            color: "#f00"
+        });
+        $("#brush").spectrum({
+            preferredFormat: "hex",
+            allowEmpty: true
+        });
+    });
+</script>
+</body>
+</html>

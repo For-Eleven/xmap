@@ -1,0 +1,182 @@
+
+.emap-marker {
+    width: 20px;
+    height: 30px;
+    background: url(imgs/mark.png) -32px 0 no-repeat;
+}
+
+.emap-marker-label {
+    white-space: nowrap;
+    border: 1px solid rgb(76, 76, 76);
+    padding: 2px 7px;
+    -webkit-box-shadow: rgb(160, 160, 160) 2px 2px 8px;
+    box-shadow: rgb(160, 160, 160) 2px 2px 8px;
+    line-height: 15px;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: block;
+    font-weight: normal;
+    font-size: 12px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.emap-detail-zoom-control {
+
+}
+
+.emap-detail-zoom-control .control-move {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 45px;
+    height: 47px;
+    background: url("imgs/zoomorient.png");
+}
+
+.emap-detail-zoom-control .control-move-up {
+    position: absolute;
+    top: 5px;
+    left: 18px;
+    width: 11px;
+    height: 9px;
+    background: url(imgs/zoomup.png);
+}
+
+.emap-detail-zoom-control .control-move-up:hover {
+    background: url("imgs/zoomup_hover.png");
+}
+
+.emap-detail-zoom-control .control-move-up:active {
+    background: url("imgs/zoomup_click.png");
+}
+
+.emap-detail-zoom-control .control-move-down {
+    position: absolute;
+    top: 34px;
+    left: 18px;
+    width: 11px;
+    height: 8px;
+    background: url("imgs/zoomdown.png");
+}
+
+.emap-detail-zoom-control .control-move-down:hover {
+    background: url("imgs/zoomdown_hover.png");
+}
+
+.emap-detail-zoom-control .control-move-down:active {
+    background: url("imgs/zoomdown_click.png");
+}
+
+.emap-detail-zoom-control .control-move-left {
+    position: absolute;
+    top: 18px;
+    left: 5px;
+    width: 9px;
+    height: 11px;
+    background: url("imgs/zoomleft.png");
+}
+
+.emap-detail-zoom-control .control-move-left:hover {
+    background: url("imgs/zoomleft_hover.png");
+}
+
+.emap-detail-zoom-control .control-move-left:active {
+    background: url("imgs/zoomleft_click.png");
+}
+
+.emap-detail-zoom-control .control-move-right {
+    position: absolute;
+    top: 18px;
+    left: 32px;
+    width: 9px;
+    height: 11px;
+    background: url("imgs/zoomright.png");
+}
+
+.emap-detail-zoom-control .control-move-right:hover {
+    background: url("imgs/zoomright_hover.png");
+}
+
+.emap-detail-zoom-control .control-move-right:active {
+    background: url("imgs/zoomright_click.png");
+}
+
+.emap-detail-zoom-control .control-move-center {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 16px;
+    height: 16px;
+    background: url(imgs/map_controller.png) -172px -6px no-repeat;
+}
+
+.emap-detail-zoom-control .control-zoom-up {
+    position: absolute;
+    top: 61px;
+    left: 19px;
+    width: 8px;
+    height: 8px;
+    background-image: url(imgs/zoomrulerbig.png);
+}
+
+.emap-detail-zoom-control .control-zoom-up:hover {
+    background-image: url(imgs/zoomrulerbig_hover.png);
+}
+
+.emap-detail-zoom-control .control-zoom-up:active {
+    background-image: url(imgs/zoomrulerbig_click.png);
+}
+
+.emap-detail-zoom-control .control-zoom-down {
+    position: absolute;
+    top: 193px;
+    left: 18px;
+    width: 10px;
+    height: 10px;
+    background-image: url(imgs/zoomrulersmall.png);
+}
+
+.emap-detail-zoom-control .control-zoom-down:hover {
+    background-image: url(imgs/zoomrulersmall_hover.png);
+}
+
+.emap-detail-zoom-control .control-zoom-down:active {
+    background-image: url(imgs/zoomrulersmall_click.png);
+}
+
+.emap-detail-zoom-control .control-zoom-ruler {
+    position: absolute;
+    left: 15px;
+    top: 57px;
+    width: 16px;
+    height: 150px;
+    background-image: url(imgs/zoomruler.png);
+}
+
+.emap-detail-zoom-control .control-zoom-slider {
+    position: absolute;
+    left: 15px;
+    top: 131.5px;
+    width: 16px;
+    height: 10px;
+    background-image: url(imgs/zoomslider.png);
+}
+
+.emap-detail-zoom-control .control-zoom-label {
+    position: absolute;
+    left: 35px;
+    top: 166.16666666666669px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: normal;
+    font-family: Verdana;
+    color: rgb(100, 100, 100);
+}
